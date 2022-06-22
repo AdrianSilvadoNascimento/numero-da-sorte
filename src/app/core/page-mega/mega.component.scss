@@ -1,0 +1,46 @@
+section {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10em;
+
+    h2 {
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    form {
+        width: 30vw;
+        mat-form-field {
+            display: flex;
+            flex-direction: column;
+            input {
+                width: 100%;
+            }
+        }
+        button {
+            width: 80%;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 1em;
+        }
+    }
+
+    article {
+        width: 30vw;
+        height: 15vh;
+        border: 1px solid #000;
+        text-align: center;
+        padding: 15px;
+        margin-top: 3em;
+
+        span {
+            font-size: 3em;
+            font-weight: bold;
+            line-height: 15vh;
+            letter-spacing: 20px;
+        }
+    }
+
+}
