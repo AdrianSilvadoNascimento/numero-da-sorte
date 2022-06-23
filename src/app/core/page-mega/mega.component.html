@@ -1,21 +1,39 @@
 <section>
     <h2>Gere seu número da sorte!</h2>
     <form #sortearMega="ngForm" (ngSubmit)="pegarValores(sortearMega)" novalidate>
-        <mat-form-field>
-            <mat-label>Quantos jogos serão?</mat-label>
-            <input matInput name="quantosJogos" type="number" ngModel #quantosJogos="ngModel" required>
-        </mat-form-field>
-        <!-- <mat-form-field>
-            <mat-label>Quantos números serão?</mat-label>
-            <input matInput name="quantosNumeros" type="number" ngModel #quantosNumeros="ngModel" required>
-        </mat-form-field> -->
+        <div class="inputs">
+            <mat-form-field>
+                <mat-label>Quantos números serão?</mat-label>
+                <input
+                    matInput
+                    name="quantosNumeros"
+                    type="number"
+                    ngModel
+                    #quantosNumeros="ngModel"
+                    min="6"
+                    max="15"
+                    required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Quantos jogos serão?</mat-label>
+                <input
+                    matInput
+                    name="quantosJogos"
+                    type="number"
+                    ngModel
+                    #quantosJogos="ngModel"
+                    min="1"
+                    max="8"
+                    required>
+            </mat-form-field>
+        </div>
         <button mat-raised-button type="submit" color="primary">Sortear</button>
     </form>
 
-    <article name="numeros-sorteados">
-        <!-- <div *ngFor="let num of numerosSorteados">
+    <section id="lista-numeros-sorteados">
+        <article name="numeros-sorteados" *ngFor="let num of numerosSorteados">
             <span>{{num.numeros}}</span>
-        </div> -->
-    </article>
+        </article>
+    </section>
     <aside name="historico-numeros"></aside>
 </section>

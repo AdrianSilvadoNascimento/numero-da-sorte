@@ -1,31 +1,54 @@
-import { Component } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { Component, OnInit } from "@angular/core"
+import { NgForm } from "@angular/forms"
 
 @Component({
     templateUrl: 'mega.component.html',
     styleUrls: ['mega.component.scss'],
 })
-export class MegaPage {
-    numerosSorteados = [
-        {
-            numeros: [1, 2, 3, 4, 5, 6],
-        }
-    ]
-
+export class MegaPage implements OnInit {
     constructor() {}
+    
+    isSorting: boolean
+    numerosSorteados = []
+
+    ngOnInit(): void {
+        this.sorteioInicial()
+    }
+
+    sorteioInicial(): void {
+        let numerosDaSorte
+        for (let jogos = 0; jogos < 1; jogos++) {
+            numerosDaSorte = this.sortearJogo(6)
+            this.numerosSorteados.push(numerosDaSorte)
+        }
+    }
 
     pegarValores(sortearMega: NgForm): void {
         const jogo  = sortearMega.value.quantosJogos
-        let numTemp = {}
-        for (let i = 0; i <= jogo; i++) {
-            let sortear = this.sortearAleatorio() * 1
-            // numTemp.push(sortear)
+        const numeros = sortearMega.value.quantosNumeros
+        if (numeros >= 6) {
+            let numerosDaSorte
+            for (let jogos = 0; jogos < jogo; jogos++) {
+                numerosDaSorte = this.sortearJogo(numeros)
+                this.numerosSorteados.push(numerosDaSorte)
+            }
+            sortearMega.resetForm()
         }
-        console.log(numTemp)
-        sortearMega.resetForm()
     }
 
-    sortearAleatorio() {
+    sortearJogo(numeros: number): object {
+        let valores = []
+        let numTemp = {}
+        for (let valor = 0; valor < numeros; valor++) {
+            let sortear = this.sortearAleatorio() * 1
+            valores.push(sortear)
+        }
+        numTemp = { numeros: valores }
+        console.log('jogo:', numTemp)
+        return numTemp
+    }
+
+    sortearAleatorio(): number {
         return Math.floor(Math.random() * (1 - 61) + 1)
     }
 }
