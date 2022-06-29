@@ -42,14 +42,15 @@ section {
             padding: 8px;
             margin: 5px 0;
             text-align: center;
-            word-break: break-all;
+            // word-break: normal;
+            word-wrap: break-word;
             vertical-align: middle;
     
             span {
                 font-size: 1.5em;
                 font-weight: bold;
                 line-height: 15vh;
-                letter-spacing: 10px;
+                letter-spacing: 15px;
             }
         }
     }

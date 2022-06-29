@@ -9,6 +9,7 @@ export class MegaPage implements OnInit {
     constructor() {}
     
     isSorting: boolean
+    podeSortear: boolean
     numerosSorteados = []
 
     ngOnInit(): void {
@@ -26,7 +27,8 @@ export class MegaPage implements OnInit {
     pegarValores(sortearMega: NgForm): void {
         const jogo  = sortearMega.value.quantosJogos
         const numeros = sortearMega.value.quantosNumeros
-        if (numeros >= 6) {
+        this.podeSortear = numeros > 5 && numeros < 16 && jogo > 0 || jogo < 9 ? true : false
+        if (this.podeSortear) {
             let numerosDaSorte
             for (let jogos = 0; jogos < jogo; jogos++) {
                 numerosDaSorte = this.sortearJogo(numeros)
@@ -49,6 +51,6 @@ export class MegaPage implements OnInit {
     }
 
     sortearAleatorio(): number {
-        return Math.floor(Math.random() * (1 - 61) + 1)
+        return Math.floor(Math.random() * (1 + 61) + 1)
     }
 }
